@@ -59,6 +59,9 @@
 #  : E771
 #  : E61E
 #  : E649
+#  : F12A
+# 󰈅 : F0205
+# ⚡
 
 # 色のパレット設定
 palette = 'mono'
@@ -79,7 +82,7 @@ $git_branch\
 $git_status\
 $fill\
 [](fg:bg3)\
-$jobs\
+$status\
 [](fg:mid23 bg:bg3)\
 [](fg:bg2 bg:mid23)\
 $cmd_duration\
@@ -141,7 +144,7 @@ untracked = '?'
 stashed = '$'
 modified = '!${count}'
 renamed = '»'
-deleted = '✘'
+deleted = '✘ '
 format = '[ \[$all_status$ahead_behind \]]($style)[](fg:git)'
 
 [character]
@@ -151,7 +154,7 @@ error_symbol = "[ >> ](bold red)"
 
 [cmd_duration]
 min_time = 5
-format = '[ ]($style)[$duration ](bold $style)'
+format = '[  ]($style)[$duration ](bold $style)'
 style = "fg:fg2 bg:bg2"
 show_milliseconds = true
 
@@ -174,8 +177,13 @@ symbol_threshold = 0
 number_threshold = 1
 
 [status]
-format = "[$symbol$status]($style)"
+format = "[ $symbol $common_meaming ]($style)"
 style = "bold fg:fg3 bg:bg3"
+disabled = false
+symbol = "[✘](fg:red bg:bg3)"
+success_symbol = "[](fg:green bg:bg3)"
+sigint_symbol = "[⚡](fg:yellow bg:bg3)"
+signal_symbol = "[](fg:red bg:bg3)" 
 
 [shell]
 disabled = false
@@ -193,6 +201,7 @@ disabled = false
 
 [palettes.mono]
 white = '#DFDFDF'
+yellow = '#FFE100'
 green = '#27C722'
 red   = '#CF2727'
 bg_base = '#404040'
