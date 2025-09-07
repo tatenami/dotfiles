@@ -62,6 +62,9 @@
 #  : F12A
 # 󰈅 : F0205
 # ⚡
+# 󰣇 : F08C7
+#  : E732
+#  : F303 
 
 # 色のパレット設定
 palette = 'mono'
@@ -111,6 +114,7 @@ disabled = false
 
 [os.symbols]
 Ubuntu = " "
+EndeavourOS = "  "
 
 [username]
 format = '[ $user ]($style)'

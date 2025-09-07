@@ -1,0 +1,8 @@
+"custom/app": {
+    "format": "App",
+    "rotate": 0,
+    "exec": "echo ; echo App",
+    "on-click": "pkill -x rofi || rofilaunch.sh d > /dev/null 2>&1",
+    "interval" : 86400, // once every day
+    "tooltip": true
+},
