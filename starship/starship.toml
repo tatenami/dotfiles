@@ -1,0 +1,308 @@
+# 各種アイコン系
+#  : E0BE
+#  : E0BC
+#  : E0B5
+#  : E0B4
+#  : E0BA
+#  : E0B8
+#  : E0B7
+#  : E0B6
+#  : E0BD
+#  : E0BB
+#  : E0BF
+#  : E0B9
+#  : E0B3
+#  : E0B2
+#  : E0B1
+#  : E0B0
+#  : EA9C
+#  : F061
+# 󰁔 : F0054
+#  : F432
+#  : E0D4
+#  : E0D2
+#  : E0D6
+#  : E0D7
+#  : E0C5
+#  : E0C4
+#  : E0C7
+#  : E0C6
+#  : E0CD
+#  : E0CC
+#  : E00A
+#  : E009
+#  : EF72
+#  : F31B
+#  : EBC9
+#  : F31C
+#  : E5FE
+#  : F114
+#  : EA83
+#  : EAB2
+#  : F00C
+# 󰄬 : F012C
+#  : F42E
+#  : F058
+#  : F45B
+#  : F4EB
+#  : E641
+# 󱑀 : F1440
+#  : F4BC
+#  : EC19
+#  : E266
+# 󰘚 : F061A
+#  : EfC5
+#  : E702
+# 󰊢 : F02A2
+#  : E65D
+#  : E61D
+#  : E646
+#  : E771
+#  : E61E
+#  : E649
+#  : F12A
+# 󰈅 : F0205
+# ⚡
+# 󰣇 : F08C7
+#  : E732
+#  : F303 
+#  : EABC
+#  : EAF5
+#  : EB04
+#  : EA82
+# 󰔚 : F051A
+#  : F126
+# 󰘬 : F062C
+#  : F418 
+
+# 色のパレット設定
+palette = 'eva01'
+
+# プロンプトのデザイン
+format = """
+[](fg:bg_os)\
+$os\
+$hostname\
+[](fg:bg_host bg:bg_user)\
+$username\
+[](fg:bg_user bg:bg_dir)\
+$directory\
+[](fg:bg_dir bg:bg_status)\
+$git_branch\
+$git_status\
+[](fg:bg_git)\
+$fill\
+[](fg:fg_status)\
+[](fg:bg_status bg:fg_status)\
+$status\
+[](fg:fg_cmd bg:bg_cmd)\
+$cmd_duration\
+[](fg:fg_shell bg:bg_shell)\
+$time\
+[](fg:bg_shell)
+$character\
+"""
+
+# $fill ~ $fill: each lang env component
+
+right_format = """
+$c
+$cpp
+"""
+
+[fill]
+symbol = '─'
+style = "bold fg:bg_base"
+
+[os]
+format = '[$symbol]($style)'
+style = "bold fg:fg_os bg:bg_os"
+disabled = false
+
+[os.symbols]
+Ubuntu = " "
+EndeavourOS = "  "
+Arch = "  "
+
+[hostname]
+format = '[$hostname ]($style)'
+style = "bold fg:fg_host bg:bg_host"
+ssh_only = false
+
+[username]
+format = '[ $user ]($style)'
+style_user = "bold fg:fg_user bg:bg_user"
+show_always = true
+disabled = false
+
+[directory]
+truncation_length = 2
+format = '[ $path ]($style)[$read_only]($read_only_style)'
+style = "bold fg:fg_dir bg:bg_dir"
+truncation_symbol = '…/'
+
+[git_branch]
+symbol = '󰘬 '
+truncation_length = 6
+truncation_symbol = '…`'
+style = 'fg:fg_git bg:bg_git'
+format = '[ $symbol$branch(:$remote_branch)]($style)' # nf-pl-left_soft_divider
+
+[git_status]
+style = 'fg:fg_git bg:bg_git'
+conflicted = '='
+ahead = '⇡${count}'
+behind = '⇣${count}'
+diverged = '⇕'
+up_to_date = '✓'
+untracked = '?${count}'
+stashed = '$'
+modified = '!\(${count}\) '
+renamed = '»\(${count}\) '
+deleted = '✘\(${count}\)'
+format = '[$up_to_date $modified$renamed$deleted ]($style)'
+
+[character]
+format = '$symbol'
+success_symbol = "[ >> ](bold green)"
+error_symbol = "[ >> ](bold red)"
+
+[cmd_duration]
+min_time = 5
+format = '[ 󰔚 $duration ](bold $style)'
+style = "bold fg:fg_cmd bg:bg_cmd"
+show_milliseconds = true
+
+[time]
+format = "[ $time ]($style)"
+style = "bold fg:fg_time bg:bg_time"
+disabled = false
+
+[memory_usage]
+format = "[ ${ram_pct}]($style)"
+style = "bold fg:fg_mem bg:bg_mem"
+threshold = -1
+disabled = false
+
+[jobs]
+format = "[$symbol $number]($style)"
+style = "bold fg:fg_jobs bg:bg_jobs"
+symbol = "✦"
+symbol_threshold = 0
+number_threshold = 1
+
+[status]
+format = "[ $symbol ]($style)"
+style = "bold fg:fg_status bg:bg_status"
+disabled = false
+symbol = '[✘ $common_meaning\($status\)](fg:red bg:bg_status)'
+success_symbol = "[ ](bold fg:green bg:bg_status)"
+sigint_symbol = "[⚡](fg:yellow bg:bg_status)"
+signal_symbol = "[](fg:red bg:bg_status)" 
+
+[shell]
+format = '[ $indicator ]($style)'
+disabled = false
+style = "bold fg:fg_shell bg:bg_shell"
+
+[c]
+format = "[  $name $version ]($style)"
+style = "fg:cpp bg:black"
+disabled = false
+
+[cpp]
+format = "[  $name $version ]($style)"
+style = "fg:cpp bg:black"
+disabled = false
+
+[palettes.mono]
+white = '#DFDFDF'
+yellow = '#FFE100'
+green = '#27C722'
+red   = '#CF2727'
+bg_base = '#404040'
+
+fg_os = '#DFDFDF'
+bg_os = '#101010'
+mid12 = '#303030'
+fg2 = '#000000'
+bg2 = '#505050'
+mid23 = '#707070'
+fg3 = '#202020'
+bg3 = '#909090'
+fg_cmd = '#202020'
+bg_cmd = '#909090'
+mid_cmd_mem = '#505050'
+fg_mem = '#DFDFDF'
+bg_mem = '#202020'
+
+right_accent = '#EB8900'
+git = '#3261E6'
+cpp = '#4889D4'
+
+[palettes.eva01]
+white = '#DFDFDF'
+green = '#27C722'
+red   = '#CF2727'
+bg_base = '#404040'
+fg_os = '#DFDFDF'
+bg_os = '#202020'
+fg_host = '#DFDFDF'
+bg_host = '#202020'
+fg_user = '#202020'
+bg_user = '#27C722'
+fg_dir = '#DFDFDF'
+bg_dir = '#601BAB'
+fg_status = '#EB8900'
+bg_status = '#202020'
+fg_jobs = '#202020'
+bg_jobs = '#EB8900'
+fg_shell = '#EB8900'
+bg_shell = '#202020'
+fg_cmd = '#EB8900'
+bg_cmd = '#202020'
+fg_time = '#EB8900'
+bg_time = '#202020'
+fg_git = '#DFDFDF'
+bg_git = '#202020'
+
+git = '#3261E6'
+cpp = '#4889D4'
+
+[palettes.eva03]
+white = '#DFDFDF'
+green = '#27C722'
+red   = '#CF2727'
+bg_base = '#404040'
+fg3 = '#DFDFDF'
+bg3 = '#000F40'
+fg2 = '#202020'
+bg2 = '#DADADA'
+bg_os = '#800000'
+fg_cmd = '#202020'
+bg_cmd = '#EB8900'
+fg_cpu = '#EB8900'
+bg_cpu = '#202020'
+right_accent = '#EB8900'
+fg_os = '#101010'
+git = '#3261E6'
+cpp = '#4889D4'
+
+[palettes.eva06]
+white = '#DFDFDF'
+green = '#27C722'
+red   = '#CF2727'
+bg_base = '#404040'
+fg3 = '#DFDFDF'
+bg3 = '#174278'
+fg2 = '#202020'
+bg2 = '#D48E00'
+bg_os = '#202020'
+fg_cmd = '#EB8900'
+bg_cmd = '#202020'
+fg_cpu = '#EB8900'
+bg_cpu = '#202020'
+right_accent = '#EB8900'
+fg_os = '#101010'
+git = '#3261E6'
+cpp = '#4889D4'
