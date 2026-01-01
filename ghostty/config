@@ -1,0 +1,157 @@
+# This is the configuration file for Ghostty.
+#
+# This template file has been automatically created at the following
+# path since Ghostty couldn't find any existing config files on your system:
+#
+#   /home/user/.config/ghostty/config
+#
+# The template does not set any default options, since Ghostty ships
+# with sensible defaults for all options. Users should only need to set
+# options that they want to change from the default.
+#
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+#
+# Ghostty can reload the configuration while running by using the menu
+# options or the bound key (default: Command + Shift + comma on macOS and
+# Control + Shift + comma on other platforms). Not all config options can be
+# reloaded while running; some only apply to new windows and others may require
+# a full restart to take effect.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+# font-family = Iosevka
+# window-padding-x = 2
+#
+# # Spacing around the equals sign does not matter.
+# # All of these are identical:
+# key=value
+# key= value
+# key =value
+# key = value
+#
+# # Any line beginning with a # is a comment. It's not possible to put
+# # a comment after a config option, since it would be interpreted as a
+# # part of the value. For example, this will have a value of "#123abc":
+# background = #123abc
+#
+# # Empty values are used to reset config keys to default.
+# key =
+#
+# # Some config options have unique syntaxes for their value,
+# # which is explained in the docs for that config option.
+# # Just for example:
+# resize-overlay-duration = 4s 200ms
+
+
+
+# === Shell Integration Configs ===
+# シェルの設定に合わせるかどうか
+shell-integration = detect
+# シェル側から引き継ぐ機能
+  # no-xxx は，xxx の機能を無効化
+shell-integration-features = no-cursor,no-sudo,no-ssh-env,no-ssh-terminfo,path,title
+
+# === Font Configs ===
+font-family = "JetBrainsMono Nerd Font"
+font-family-bold = "JetBrainsMono NF Bold"
+font-family-italic = "JetBrainsMono NF Italic"
+font-family-bold-italic = "JetBrainsMono NF Bold Italic"
+
+font-size = 11
+
+# UI Design
+background = #1F1E33
+# foreground = #FFEEDD
+
+background-image = "img/hyprland_icon.png"
+background-image-opacity = 0.9
+background-image-fit = cover
+
+background-opacity = 0.8
+background-blur = true
+
+split-divider-color = #00FFF3
+
+# === Text Configs ===
+selection-clear-on-typing = true
+selection-clear-on-copy = false
+
+# === Color Palette ===
+
+# === Cursor Configs ===
+cursor-color = #FFFFFF
+cursor-style = bar
+# カーソルがある箇所の文字色
+cursor-text = #0088FF
+
+# Alt + Click でカーソルを移動
+cursor-click-to-move = true
+
+# === Scroll Configs ===
+scroll-to-bottom = keystroke,no-output
+
+# === Mouse Configs ===
+mouse-shift-capture = false
+mouse-scroll-multiplier = 2
+
+focus-follows-mouse = false
+
+# === Link Configs ===
+link-url = true
+
+# === Window Configs ===
+window-padding-x = 15
+window-padding-y = 5
+
+# === Title bar ===
+# title = "Ghostty"
+window-subtitle = working-directory
+gtk-titlebar-style = native
+
+# === Clipboard Configs ===
+clipboard-read = ask
+clipboard-write = allow
+
+# === Quick-Terminal Configs ===
+quick-terminal-position = center
+quick-terminal-size = 80%
+
+# quick-terminal-position = top
+gtk-quick-terminal-layer = top
+quick-terminal-autohide = false
+quick-terminal-keyboard-interactivity = on-demand
+
+# === Split Configs ===
+unfocused-split-opacity = 0.55
+
+# [ Keybinds ]
+# window
+keybind = ctrl+q=quit
+keybind = ctrl+enter=toggle_fullscreen
+
+# tab
+keybind = ctrl+shift+t=new_tab
+keybind = ctrl+shift+arrow_left=previous_tab
+keybind = ctrl+shift+arrow_right=next_tab
+keybind = ctrl+tab=next_tab
+keybind = ctrl+shift+q=close_tab:this
+
+# split
+keybind = ctrl+shift+alt+h=new_split:left
+keybind = ctrl+shift+alt+j=new_split:down
+keybind = ctrl+shift+alt+k=new_split:up
+keybind = ctrl+shift+alt+l=new_split:right
+keybind = ctrl+alt+arrow_left=goto_split:left
+keybind = ctrl+alt+arrow_down=goto_split:down
+keybind = ctrl+alt+arrow_up=goto_split:up
+keybind = ctrl+alt+arrow_right=goto_split:right
+keybind = ctrl+alt+q=close_surface
+
+# quick terminal
+keybind = global:ctrl+shift+f=toggle_quick_terminal
