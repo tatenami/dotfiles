@@ -4,27 +4,32 @@
     font-family: "JetBrainsMono Nerd Font";
     font-weight: bold;
     font-size: 13px;
-    min-height: 10px;
+    min-height: 12px;
 }
 
 @import "theme.css";
 
 window#waybar {
     /* background: @bar-bg; */
-    background: linear-gradient(
+    /* background: linear-gradient(
         to bottom,
-        rgba(120, 120, 120, 0.90),
-        rgba(40, 40, 40, 0.90)        
-    );
-    border-radius: 10px;
+        rgba(240, 240, 240, 0.90),
+        rgba(150, 150, 150, 0.90)        
+    ); */
+
+    background: transparent;
+    /* margin: 0px; */
+    /* border-radius: 10px; */
+    /* padding-bottom: 0px;
+    margin-bottom: 0px; */
     /* background-color: transparent; */
 }
 
 tooltip {
+    border: 2px solid #505050;
     background: @main-bg;
     color: @main-fg;
     border-radius: 8px;
-    border-width: 0px;
 }
 
 #workspaces button {
@@ -94,20 +99,6 @@ tooltip {
     animation: tb_hover 20s ease-in-out 1;
     transition: all 0.3s cubic-bezier(.55,-0.68,.48,1.682);
 }
-/* 
-#custom-app button {
-    box-shadow: none;
-	text-shadow: none;
-    padding: 0px;
-    border-radius: 9px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    margin-left: 0px;
-    padding-left: 3px;
-    padding-right: 3px;
-    margin-right: 0px;
-    color: @main-fg;
-} */
 
 #tray menu * {
     min-height: 16px
@@ -118,10 +109,7 @@ tooltip {
 }
 
 #custom-border,
-#custom-app,
-#custom-terminal,
-#custom-nautilus,
-#custom-waypaper,
+#custom-os,
 #backlight,
 #battery,
 #bluetooth,
@@ -139,7 +127,6 @@ tooltip {
 #mpris,
 #network,
 #custom-notifications,
-#custom-power,
 #privacy,
 #pulseaudio,
 #custom-spotify,
@@ -147,28 +134,42 @@ tooltip {
 #custom-theme,
 #tray,
 #custom-updates,
-#custom-wallchange,
 #custom-wbar,
 #window,
 #workspaces,
-#custom-pl,
-#custom-pr,
-#custom-tl_end,
-#custom-tr_end,
 #custom-l_end,
 #custom-r_end,
-#custom-sl_end,
-#custom-sr_end,
-#custom-rl_end,
-#custom-rr_end {
-    /* border-top: 2px solid @border;
-    border-bottom: 2px solid @border; */
+#custom-l_battery,
+#custom-r_battery,
+#custom-l_cpu,
+#custom-r_cpu,
+#custom-l_memory,
+#custom-r_memory,
+#custom-l_network,
+#custom-r_network,
+#custom-l_audio,
+#custom-r_audio {
+    border-top: 2px solid @border;
+    border-bottom: 2px solid @border;
     color: @main-fg;
-    background: @main-bg;
+    background: @black;
     opacity: 1;
-    margin: 4px 0px 5px 0px;
+    margin: 6px 0px 6px 0px;
     padding-left: 2px;
     padding-right: 2px;
+}
+
+#custom-os {
+    /* padding-left: 7px;
+    border-radius: 10px; */
+    padding-left: 0px;
+    font-size: 16px;
+    color: #30B0E0;
+}
+
+#custom-border {
+    color: #505050;
+    background-color: @black;
 }
 
 /* apps */
@@ -176,61 +177,195 @@ tooltip {
 #custom-app,
 #custom-terminal,
 #custom-nautilus,
-#custom-waypaper {
-    padding-left: 6px;
-    padding-right: 6px;
+#custom-wallpaper,
+#custom-vscode,
+#custom-flameshot,
+#custom-waypaper,
+#custom-power {
+    background-color: @black; 
+    /* border-radius: 7px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 6px 0px 6px 0px;
+
+    border-top: 2px solid @border;
+    border-bottom: 2px solid @border;
+
+    /* animation config */
+    transition: all 0.1s ease, color 0.3s ease;
+}
+
+#custom-l_battery,
+#custom-l_cpu,
+#custom-l_memory,
+#custom-l_network,
+#custom-l_audio {
+    margin-left: 4px;
+    border-radius: 6px 0px 0px 6px;
+    padding-right: 0px;
+}
+
+#custom-r_battery,
+#custom-r_cpu,
+#custom-r_memory,
+#custom-r_network,
+#custom-r_audio {
+    margin-right: 4px;
+    border-radius: 0px 6px 6px 0px;
+    padding-left: 0px;
+}
+
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+#battery {
+    color: #BBFF5E;
+    padding-left: 0px;
 }
 
 #cpu {
     font-size: 14px;
-    padding-right: 3px;
     color: #15E0B9;
 }
 
 #memory {
-    padding-left: 3px;
-    padding-right: 3px;
+    font-size: 14px;
     color: #20C5EE;
 }
 
 #network {
-    padding-left: 4px;
-    padding-right: 1px;
+    color: #167EE0;
 }
 
-/* border line */
-#custom-border {
-    font-size: 16px;
-    color: #505050;
+#pulseaudio {
+    color: #757EFF;
 }
 
 /* for applications bar */
 #custom-app {
+    color: @app;
     font-size: 17px;
-    padding-right: 0px;
-    color: #FCACC0;
+    padding-right: 1px;
+}
+#custom-app:hover {
+    background: radial-gradient(
+        circle,
+        @app 35%,
+        @black 35%
+    );
+    color: @black;
 }
 
 #custom-terminal {
-    color: #FFD095;
+    padding-left: 8px;
+    padding-right: 7px;
+    color: @terminal;
+}
+#custom-terminal:hover {
+    color: @black;
+    background: radial-gradient(
+        circle,
+        @terminal 35%,
+        @black 35%
+    );
 }
 
 #custom-nautilus {
     font-size: 15px;
-    padding-right: 0px;
-    color: #EBFCAC;
+    padding-right: 3px;
+    color: @nautilus;
+}
+#custom-nautilus:hover {
+    color: @black;
+    background: radial-gradient(
+        circle,
+        @nautilus 35%,
+        @black 35%
+    );
 }
 
 #custom-waypaper {
+    font-size: 16px;
+    padding-left: 9px;
+    padding-right: 2px;
+    color: @waypaper;
+}
+#custom-waypaper:hover {
+    color: @black;
+    background: radial-gradient(
+        circle,
+        @waypaper 35%,
+        @black 35%
+    );
+}
+
+#custom-vscode {
     font-size: 15px;
-    padding-right: 0px;
-    color: #ACFCC8;
+    padding-left: 9px;
+    padding-right: 3px;
+    color: @vscode;
+}
+#custom-vscode:hover {
+    color: @black;
+    background: radial-gradient(
+        circle,
+        @vscode 35%,
+        @black 35%
+    );
+}
+
+#custom-flameshot {
+    font-size: 15px;
+    padding-left: 9px;
+    padding-right: 4px;
+    color: @flameshot;
+}
+#custom-flameshot:hover {
+    color: @black;
+    background: radial-gradient(
+        circle,
+        @flameshot 35%,
+        @black 35%
+    );
 }
 
 #custom-keybindhint {
     font-size: 15px;
-    padding-right: 2px;
-    color: #ACEAFC;
+    padding-left: 8px;
+    padding-right: 5px;
+    color: @keybindhint;
+}
+#custom-keybindhint:hover {
+    color: @black;
+    background: radial-gradient(
+        circle,
+        @keybindhint 35%,
+        @black 35%
+    );
+}
+
+/* power button */
+#custom-power {
+    color: @power;
+    border: 2px solid @power;
+    border-radius: 20px 20px 20px 20px;
+    padding-left: 0px;
+    padding-right: 3px;
+    padding-top: 1px;
+    margin: 8px 10px 6px 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#custom-power:hover {
+    color: #000000;
+    border-color: @power;
+    background-color: @power;
 }
 
 #workspaces,
@@ -238,12 +373,20 @@ tooltip {
     padding: 2px;
 }
 
-#network {
-    color: #167eE0;
-}
-
 #custom-updates {
     color: palegoldenrod;
+}
+
+/* normal edge */
+#custom-l_end {
+    /* border-left: 2px solid @border; */
+    border-radius: 10px 0px 0px 10px;
+    margin-left: 9px;
+    padding-left: 3px;
+
+    border-top: 2px solid @border;
+    border-bottom: 2px solid @border;
+    border-left: 2px solid @border;
 }
 
 #custom-r_end {
@@ -251,13 +394,10 @@ tooltip {
     border-radius: 0px 10px 10px 0px;
     margin-right: 5px;
     padding-right: 2px;
-}
 
-#custom-l_end {
-    /* border-left: 2px solid @border; */
-    border-radius: 10px 0px 0px 10px;
-    margin-left: 9px;
-    padding-left: 3px;
+    border-top: 2px solid @border;
+    border-bottom: 2px solid @border;
+    border-right: 2px solid @border;
 }
 
 #custom-sr_end {
@@ -282,54 +422,4 @@ tooltip {
     border-radius: 8px 0px 0px 8px;
     margin-left: 9px;
     padding-left: 3px;
-}
-
-#custom-tr_end {
-    /* border-radius: 0px 8px 8px 0px; */
-    /* margin-left: 5px; */
-    /* margin: 4px; */
-    padding-left: 0px;
-
-    background: linear-gradient(
-        110deg, /* グラデーションの角度（45deg, 225degなども可）*/
-        @main-bg 45%, 
-        transparent 50%
-    );
-}
-
-#custom-tl_end {
-    /* border-radius: 8px 0px 0px 8px;
-    margin-left: 5px; */
-    padding-left: 0px;
-    padding-right: 0px;
-
-    background: linear-gradient(
-        110deg, /* グラデーションの角度（45deg, 225degなども可）*/
-        transparent 45%,
-        @main-bg 50%
-    );
-}
-
-/* power button */
-#custom-power {
-    color: tomato;
-    border-radius: 20px 20px 20px 20px;
-    padding-left: 3px;
-    padding-right: 6px;
-    margin-left: 6px;
-}
-
-
-#custom-pl {
-    opacity: 1;
-    border-radius: 15px 0px 0px 15px;
-    margin-right: 0px;
-    padding-right: 0px;
-}
-
-#custom-pr {
-    opacity: 1;
-    border-radius: 0px 15px 15px 0px;
-    margin-left: 0px;
-    padding-left: 0px;
 }

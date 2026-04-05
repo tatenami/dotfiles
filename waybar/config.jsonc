@@ -7,8 +7,8 @@
     "output": [ "*" ],
     "position": "top",
     "mod": "dock",
-    "margin": "5px",
-    "height": 35,
+    "margin": "0px",
+    "height": 25,
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -17,29 +17,47 @@
 // positions generated based on config.ctl //
 
 	"modules-left": 
-    ["custom/padd",
-     "custom/l_end","clock","custom/r_end",
-     "custom/l_end",
-        "custom/app","custom/border",
-        "custom/terminal","custom/border",
-        "custom/nautilus","custom/border",
-        "custom/waypaper","custom/border",
+    [
+        "custom/padd",
+        "custom/l_end",
+            "custom/os","hyprland/workspaces",
+        "custom/r_end",
+        "custom/l_end",
+        "custom/app",
+        "custom/terminal",
+        "custom/nautilus",
+        "custom/waypaper",
+        "custom/vscode",
+        "custom/flameshot",
         "custom/keybindhint",
-     "custom/r_end",
-     "custom/l_end","hyprland/window","custom/r_end",
-     "custom/padd"],
+        //  "custom/l_end","hyprland/window","custom/r_end",
+        "custom/r_end",
+        "custom/padd"
+    ],
 	"modules-center": 
-    ["custom/padd",
-     "custom/l_end",
-        "hyprland/workspaces",
-     "custom/r_end",
-     "custom/padd"],
+    [
+        "custom/padd",
+        "custom/l_end",
+            "clock",
+        "custom/r_end",
+        "custom/padd"
+    ],
 	"modules-right": 
-    ["custom/padd",
-     "custom/l_end","cpu","custom/border","memory","custom/border","network","custom/r_end",
-     "custom/l_end","privacy","tray","battery","pulseaudio","custom/r_end",
-     "custom/power",
-     "custom/padd"],
+    [
+        "custom/padd",
+        "custom/l_end",
+            "tray",
+        "custom/r_end",
+        "custom/l_end",
+            "battery","custom/border",
+            "cpu","custom/border",
+            "memory","custom/border",
+            "network","custom/border",
+            "pulseaudio",
+        "custom/r_end",
+        "custom/power",
+        "custom/padd"
+    ],
 
 
 // sourced from modules based on config.ctl //
@@ -70,9 +88,9 @@
     },
 
     "custom/waypaper": {
-        "format": " ",
+        "format": "󰸉 ",
         "rotate": 0,
-        "on-click": "waypaper > /dev/null 2>&1 &",
+        "on-click": "~/.config/waybar/launch_waypaper.sh",
         "interval" : 86400, // once every day
         "tooltip": true,
         "tooltip-format": "Set Wallpaper"
@@ -85,6 +103,40 @@
         "interval" : 86400, // once every day
         "tooltip": true,
         "tooltip-format": "Launch Explore"
+    },
+
+    "custom/vscode": {
+        "format": " ",
+        "rotate": 0,
+        "on-click": "code > /dev/null 2>&1 &",
+        "interval" : 86400, // once every day
+        "tooltip": true,
+        "tooltip-format": "Launch VSCode"
+    },
+
+    "custom/flameshot": {
+        "format": " ",
+        "rotate": 0,
+        "on-click": "flameshot gui > /dev/null 2>&1 &",
+        "interval" : 86400, // once every day
+        "tooltip": true,
+        "tooltip-format": "ScreenShot"
+    },
+
+    "custom/power": {
+        "format": "  ",
+        "rotate": 0,
+        "exec": "echo ; echo  logout",
+        "on-click": "logoutlaunch.sh 1",
+        "on-click-right": "logoutlaunch.sh 1",
+        "interval" : 86400, // once every day
+        "tooltip": true
+    },
+
+    "custom/os": {
+        "format": " ",
+        "rotate": 0,
+        "tooltip": false
     },
 
     "hyprland/workspaces": {
@@ -101,7 +153,7 @@
     },
 
     "hyprland/window": {
-        "format": "q {}",
+        "format": " {}",
         "rotate": 0,
         "separate-outputs": true,
         "rewrite": {
@@ -132,7 +184,7 @@
     },
 
     "clock": {
-        "format": "{:%Y/%m/%d [%A] 󰥔 %H:%M}",
+        "format": "{:%Y/%m/%d 󰥔 %H:%M}",
         "rotate": 0,
         "interval": 20,
         "tooltip-format": "<span>{calendar}</span>",
@@ -253,13 +305,13 @@
         "format-disconnected": "󰖪 ",
         "tooltip-format-disconnected": "Disconnected",
         "format-alt": "<span foreground='#99ffdd'> {bandwidthDownBytes}</span> <span foreground='#ffcc66'> {bandwidthUpBytes}</span>",
-        "interval": 2,
+        "nterval": 2,
     },
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "rotate": 0,
-        "format-muted": "婢",
+        "format-muted": " ",
         "on-click": "pavucontrol -t 3",
         "on-click-right": "volumecontrol.sh -s ''",
         "on-click-middle": "volumecontrol.sh -o m",
@@ -327,9 +379,9 @@
     },
 
     "tray": {
-        "icon-size": 14,
+        "icon-size": 17,
         "rotate": 0,
-        "spacing": 5
+        "spacing": 8
     },
 
     "battery": {
@@ -390,16 +442,6 @@
     //     "tooltip": true
     // },
 
-    "custom/power": {
-        "format": "  ",
-        "rotate": 0,
-        "exec": "echo ; echo  logout",
-        "on-click": "logoutlaunch.sh 2",
-        "on-click-right": "logoutlaunch.sh 1",
-        "interval" : 86400, // once every day
-        "tooltip": true
-    },
-
 // modules for padding //
 
     "custom/l_end": {
@@ -414,57 +456,67 @@
         "tooltip": false
     },
 
-    "custom/sl_end": {
+    "custom/l_battery": {
         "format": " ",
         "interval" : "once",
         "tooltip": false
     },
 
-    "custom/sr_end": {
+    "custom/r_battery": {
         "format": " ",
         "interval" : "once",
         "tooltip": false
     },
 
-    "custom/rl_end": {
+    "custom/l_cpu": {
         "format": " ",
         "interval" : "once",
         "tooltip": false
     },
 
-    "custom/rr_end": {
+    "custom/r_cpu": {
+        "format": " ",
+        "interval" : "once",
+        "tooltip": false
+    },
+
+    "custom/l_memory": {
+        "format": " ",
+        "interval" : "once",
+        "tooltip": false
+    },
+
+    "custom/r_memory": {
+        "format": " ",
+        "interval" : "once",
+        "tooltip": false
+    },
+
+    "custom/l_network": {
+        "format": " ",
+        "interval" : "once",
+        "tooltip": false
+    },
+
+    "custom/r_network": {
+        "format": " ",
+        "interval" : "once",
+        "tooltip": false
+    },
+
+    "custom/l_audio": {
+        "format": " ",
+        "interval" : "once",
+        "tooltip": false
+    },
+
+    "custom/r_audio": {
         "format": " ",
         "interval" : "once",
         "tooltip": false
     },
 
     "custom/padd": {
-        "format": "  ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    // triangle
-    "custom/tl_end": {
-        "format": "  ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/tr_end": {
-        "format": "  ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    // for power button
-    "custom/pl": {
-        "format": "  ",
-        "interval" : "once",
-        "tooltip": false
-    },
-
-    "custom/pr": {
         "format": "  ",
         "interval" : "once",
         "tooltip": false

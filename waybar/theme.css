@@ -10,4 +10,17 @@
 @define-color wb-hvr-bg #6A80A6;
 @define-color wb-hvr-fg #100010;
 
-@define-color border #ebebeb;
+@define-color border #9090DD;
+
+/* apps color */
+@define-color power #FF6347;
+@define-color app #FCACC0;
+@define-color terminal #FFD095;
+@define-color nautilus #EBFCAC;
+@define-color waypaper #ACFCC8;
+@define-color vscode #ACEAFC;
+@define-color flameshot #A8BEFF;
+@define-color keybindhint #CCADFF;
+
+/* basic color  */
+@define-color black #000000;
